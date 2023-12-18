@@ -1,4 +1,4 @@
-getDataforArtist()
+
 
 
 
@@ -301,24 +301,13 @@ document.addEventListener("DOMContentLoaded", function () {
   // --- genera 15 album casuali e popola la sidebar di sx
   
   
-  
-  fillMainAlbum(119);
-  fillMainAlbum(92);
-  fillMainAlbum(1155242);
-  fillMainAlbum(6168800);
-  fillMainAlbum(412);
-  fillMainAlbum(112133452);
-  
+
   
   document.addEventListener("mousemove", responsiveCards);
-  window.addEventListener("mousemove", changeBuongiornoCol);
   window.addEventListener("resize", responsiveCards);
-  window.addEventListener("resize", changeBuongiornoCol);
   
   document.addEventListener("click", responsiveCards);
-  window.addEventListener("click", changeBuongiornoCol);
   window.addEventListener("load", responsiveCards);
-  window.addEventListener("load", changeBuongiornoCol);
   
   
   async function fillSidebarSx(artistId) {
@@ -476,6 +465,35 @@ document.addEventListener("DOMContentLoaded", function () {
     
     })) 
 
+    let topBar = document.querySelector(".blurred-bg");
+
+    const scrollableElement = document.querySelector('.main');
+    let playlistArtistContainer = document.querySelector(".play-artist-cotainer");
+    scrollableElement.addEventListener('scroll', () => {
+      const scrollTopValue = scrollableElement.scrollTop;
+      if(scrollTopValue > 400){
+        topBar.style.opacity = "1";
+        topBar.style.transition = 'all 0.3s linear'
+        playlistArtistContainer.classList.add("d-flex");
+        playlistArtistContainer.classList.remove("d-none");
+
+      }else{
+        topBar.style.opacity = "0";
+        playlistArtistContainer.classList.remove("d-flex");
+        playlistArtistContainer.classList.add("d-none");
+      }
+
+      // Puoi fare qualcosa con il valore di scroll
+      console.log('Scroll Top:', scrollTopValue);
+  })
+  
+
+
+
+
+
+
+
 
 
 
@@ -488,11 +506,153 @@ document.addEventListener("DOMContentLoaded", function () {
 // FUNZIONI ----------------------------------------------------------------
   
   async function getDataforArtist(){
+    
+    console.log(topBar)
     let searchParams = new URLSearchParams(window.location.search);
     let artistId = searchParams.get("id");
     let artist = await getArtist(artistId);
     console.log(artist);
+    let tracklist = await getArtistTracklist(artistId);
+    console.log(tracklist);
+    
+    let wrapper = document.querySelector(".wrapper-for-artist");
+    let table = document.createElement("table");
+    table.classList.add("artist-songs");
+    let tbody = document.createElement("tbody");
+    tracklist.forEach((track, index) => {
+      let tr = document.createElement("tr");
+      tr.innerHTML = `
+      <td class="text-white">${index + 1}</td>
+      <td class="d-inline-block">
+         <img
+          class="foto-copertina "
+          src=${track.album.cover_small}
+          alt=""
+        />
+      </td>
+      <td class="text-white">${track.title}</td>
+      <td class="text-white">${track.rank}</td>
+      <td class="text-white">${Math.floor(track.duration/60)}:${String((track.duration%60)).padStart(2, '0')}</td>
+      `
+      tbody.appendChild(tr);
+    })
+    table.appendChild(tbody)
+
+    let container = document.createElement("div");
+    container.innerHTML = 
+
+
+    `
+    <div
+    class="artist-container d-flex flex-column justify-content-end pb-3"
+  >
+    <div class="top-info-artist">
+      <div class="info-artist">
+        <p class="text-white">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="20"
+            height="20"
+            fill="rgb(0, 162, 255)"
+            class="bi bi-patch-check-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M10.067.87a2.89 2.89 0 0 0-4.134 0l-.622.638-.89-.011a2.89 2.89 0 0 0-2.924 2.924l.01.89-.636.622a2.89 2.89 0 0 0 0 4.134l.637.622-.011.89a2.89 2.89 0 0 0 2.924 2.924l.89-.01.622.636a2.89 2.89 0 0 0 4.134 0l.622-.637.89.011a2.89 2.89 0 0 0 2.924-2.924l-.01-.89.636-.622a2.89 2.89 0 0 0 0-4.134l-.637-.622.011-.89a2.89 2.89 0 0 0-2.924-2.924l-.89.01-.622-.636zm.287 5.984-3 3a.5.5 0 0 1-.708 0l-1.5-1.5a.5.5 0 1 1 .708-.708L7 8.793l2.646-2.647a.5.5 0 0 1 .708.708z"
+            />
+          </svg>
+          Artista verificato
+        </p>
+        <p class="artist-name-big text-white fw-bold">
+          ${artist.name}
+        </p>
+        <p class="text-white fw-bold">
+          <!--Ascolti mensili-->
+          25.188 ascoltatori mensili
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <div class="bottoni mb-4 pt-3">
+    <button class="play-btn rounded-circle">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="currentColor"
+        class="bi bi-play-fill"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+        />
+      </svg>
+    </button>
+    <button class="random-music">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="30"
+        height="30"
+        fill="#b3b3b3"
+        class="bi bi-shuffle"
+        viewBox="0 0 16 16"
+      >
+        <path
+          fill-rule="evenodd"
+          d="M0 3.5A.5.5 0 0 1 .5 3H1c2.202 0 3.827 1.24 4.874 2.418.49.552.865 1.102 1.126 1.532.26-.43.636-.98 1.126-1.532C9.173 4.24 10.798 3 13 3v1c-1.798 0-3.173 1.01-4.126 2.082A9.624 9.624 0 0 0 7.556 8a9.624 9.624 0 0 0 1.317 1.918C9.828 10.99 11.204 12 13 12v1c-2.202 0-3.827-1.24-4.874-2.418A10.595 10.595 0 0 1 7 9.05c-.26.43-.636.98-1.126 1.532C4.827 11.76 3.202 13 1 13H.5a.5.5 0 0 1 0-1H1c1.798 0 3.173-1.01 4.126-2.082A9.624 9.624 0 0 0 6.444 8a9.624 9.624 0 0 0-1.317-1.918C4.172 5.01 2.796 4 1 4H.5a.5.5 0 0 1-.5-.5"
+        />
+        <path
+          d="M13 5.466V1.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192zm0 9v-3.932a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384l-2.36 1.966a.25.25 0 0 1-.41-.192z"
+        />
+      </svg>
+    </button>
+    <a class="btn-segui" href="">Segui</a>
+    <button class="altre-opzioni">
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="25"
+        fill="#b3b3b3"
+        class="bi bi-three-dots"
+        viewBox="0 0 16 16"
+      >
+        <path
+          d="M3 9.5a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3m5 0a1.5 1.5 0 1 1 0-3 1.5 1.5 0 0 1 0 3"
+        />
+      </svg>
+    </button>
+  </div>
+  <div class="folk-music">
+    <p class="fw-bold text-white">Popolari</p>
+  </div>
+  
+  <div class="music mx-5">
+  ${table.outerHTML}
+  </div>
+  `
+
+wrapper.appendChild(container);
+let artistContainer = document.querySelector(".artist-container");
+artistContainer.style.backgroundImage = `url(${artist.picture_xl || artist.picture})`;
+artistContainer.style.backgroundSize = "cover";
+artistContainer.style.backgroundRepeat = "no-repeat";
+topBar.style.backgroundImage = `url(${artist.picture_xl || artist.picture})`;
+topBar.style.filter = "blur(10px)";
+topBar.style.transform = "scale(2)"
+topBar.style.opacity = "0";
+let nameContainer = document.querySelector(".play-artist-name");
+nameContainer.innerText = `${artist.name}`
+topBar.style.zIndex = -1;
+console.log(table);
+console.log(wrapper);
+
   }
+
+
+  getDataforArtist()
+
+
 
 
 //   FINE FUNZIONI -------------------------------------

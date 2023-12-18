@@ -12221,6 +12221,29 @@ button > a {
   overflow-y: auto;
   overflow-x: hidden;
   margin: 0 16px;
+  padding-right: 0;
+}
+
+.play-artist-cotainer {
+  display: none;
+}
+
+.play-artist-head {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 255, 0);
+  border-radius: 50%;
+  margin-left: 1rem;
+}
+
+.play-artist-name {
+  font-size: 2rem;
+  color: white;
+  font-weight: bold;
+  margin-left: 1rem;
 }
 
 .song-info {
@@ -12235,6 +12258,7 @@ button > a {
 
 .main::-webkit-scrollbar {
   opacity: 0;
+  display: none;
 }
 
 .historyButton {
@@ -12558,4 +12582,89 @@ button > a {
   color: white;
   vertical-align: center;
   font-weight: bold;
+}
+
+.image-bg {
+  background-image: url("../imgs/main/image-7.jpg");
+  height: 50%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin-bottom: 2em;
+}
+
+.main-head {
+  overflow: hidden;
+}
+
+.artist-container {
+  height: 500px;
+  margin-top: -60px;
+}
+
+.info-artist {
+  padding: 0 16px;
+}
+
+.artist-name-big {
+  font-size: 5em;
+}
+
+.blurred-bg {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: inherit;
+  background-size: cover;
+  filter: blur(10px);
+}
+
+.bottoni {
+  padding: 0 16px;
+  cursor: pointer;
+}
+.bottoni .play-btn {
+  background-color: rgb(0, 255, 0);
+  border: 0;
+  padding: 1em;
+  margin-right: 1em;
+}
+.bottoni .random-music, .bottoni .altre-opzioni {
+  border: 0;
+  background: none;
+}
+.bottoni .btn-segui {
+  padding: 10px 15px;
+  border: 1px solid white;
+  border-radius: 3rem;
+  text-decoration: none;
+  font-weight: bold;
+  margin: 0 1em;
+  color: white;
+}
+
+.folk-music {
+  padding: 0 16px;
+}
+
+.music .foto-copertina {
+  width: 50px;
+  height: 50px;
+}
+
+.artist-songs td {
+  vertical-align: middle;
+}
+
+.album-title {
+  font-size: 60px;
+  font-weight: 900;
+  color: antiquewhite;
+}
+
+.album {
+  color: antiquewhite;
+  text-transform: uppercase;
+  font-size: 10px;
 }
