@@ -256,7 +256,7 @@ text-decoration: none;
  margin-left: 1rem;
 }
 
-.play-artist-name{
+.play-artist-name, .play-album-name{
   font-size: 2rem;
   color: white;
   font-weight: bold;
@@ -699,7 +699,9 @@ overflow:hidden
 
 // ALBUM
 // -----
-
+.album-songs td{
+  vertical-align: middle;
+}
 
 .album-title{font-size:60px;
   font-weight:900;

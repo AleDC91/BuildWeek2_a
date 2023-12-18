@@ -12239,7 +12239,7 @@ button > a {
   margin-left: 1rem;
 }
 
-.play-artist-name {
+.play-artist-name, .play-album-name {
   font-size: 2rem;
   color: white;
   font-weight: bold;
@@ -12654,6 +12654,10 @@ button > a {
 }
 
 .artist-songs td {
+  vertical-align: middle;
+}
+
+.album-songs td {
   vertical-align: middle;
 }
 
