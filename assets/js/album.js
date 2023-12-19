@@ -474,7 +474,7 @@ async function getDataforAlbum() {
           alt=""
         />
       </td>
-      <td class="text-white">${track.title}</td>
+      <td class="text-white"><a href=${track.preview} target="_blank">${track.title}</a></td>
       <td class="text-white">${track.rank}</td>
       <td class="text-white">${Math.floor(track.duration / 60)}:${String(
       track.duration % 60
@@ -593,7 +593,7 @@ async function getDataforAlbum() {
 
   artistContainer.style.backgroundSize = "cover";
   artistContainer.style.backgroundRepeat = "no-repeat";
-  topBar.style.backgroundImage = `url(${album.cover})`;
+  topBar.style.backgroundImage = `url(${album.artist.picture_big})`;
   topBar.style.filter = "blur(10px)";
   topBar.style.transform = "scale(2)";
   topBar.style.opacity = "0";

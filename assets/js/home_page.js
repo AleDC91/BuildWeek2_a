@@ -36,8 +36,7 @@ document.addEventListener("DOMContentLoaded", function () {
       homeBtnScritta.classList.add("d-none");
       cercaBtnScritta.classList.add("d-none");
       headTable.classList.add("d-none");
-    libBottDxDown.classList.add("d-none")
-
+      libBottDxDown.classList.add("d-none");
 
       songsInfo.forEach((songInfo) => {
         songInfo.classList.add("d-none");
@@ -62,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
       homeBtnScritta.classList.remove("d-none");
       cercaBtnScritta.classList.remove("d-none");
       headTable.classList.remove("d-none");
-      libBottDxDown.classList.remove("d-none")
+      libBottDxDown.classList.remove("d-none");
 
       songsInfo.forEach((songInfo) => {
         songInfo.classList.remove("d-none");
@@ -94,8 +93,7 @@ document.addEventListener("DOMContentLoaded", function () {
     homeBtnScritta.classList.add("d-none");
     cercaBtnScritta.classList.add("d-none");
     headTable.classList.add("d-none");
-    libBottDxDown.classList.add("d-none")
-
+    libBottDxDown.classList.add("d-none");
 
     songsInfo.forEach((songInfo) => {
       songInfo.classList.add("d-none");
@@ -122,7 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
     homeBtnScritta.classList.remove("d-none");
     cercaBtnScritta.classList.remove("d-none");
     headTable.classList.remove("d-none");
-    libBottDxDown.classList.add("d-none")
+    libBottDxDown.classList.add("d-none");
 
     songsInfo.forEach((songInfo) => {
       songInfo.classList.remove("d-none");
@@ -226,7 +224,7 @@ function handleMouseMoveLeft(e) {
           dataAggiunta.classList.remove("d-none")
         );
         libBottDx.classList.remove("d-none");
-        libBottDx.classList.add("d-flex")
+        libBottDx.classList.add("d-flex");
         libreriaBottoni.classList.add("d-flex");
       }
 
@@ -249,7 +247,7 @@ function handleMouseMoveLeft(e) {
     } else if (deltaX < 0) {
       if (leftMouseX < 500) {
         libBottDx.classList.add("d-none");
-        libBottDx.classList.remove("d-flex")
+        libBottDx.classList.remove("d-flex");
         tHead.classList.add("d-none");
         riprodotti.forEach((riprodotto) =>
           riprodotto.classList.remove("d-none")
@@ -296,15 +294,12 @@ function handleMouseMoveLeft(e) {
 // ------ left sidebar albums
 // --- genera 15 album casuali e popola la sidebar di sx
 
-
-
 fillMainAlbum(119);
 fillMainAlbum(92);
 fillMainAlbum(1155242);
 fillMainAlbum(6168800);
 fillMainAlbum(412);
 fillMainAlbum(112133452);
-
 
 document.addEventListener("mousemove", responsiveCards);
 window.addEventListener("mousemove", changeBuongiornoCol);
@@ -315,7 +310,6 @@ document.addEventListener("click", responsiveCards);
 window.addEventListener("click", changeBuongiornoCol);
 window.addEventListener("load", responsiveCards);
 window.addEventListener("load", changeBuongiornoCol);
-
 
 async function fillSidebarSx(artistId) {
   let tBody = document.querySelector(".playlists-table tbody");
@@ -382,9 +376,8 @@ async function getArtistAlbums(artistId) {
   return albums;
 }
 
-
 const searchURL = "https://striveschool-api.herokuapp.com/api/deezer/search?q=";
-let query = "CORPSE";
+let query = "dragons";
 search(query);
 
 async function search(query) {
@@ -399,16 +392,30 @@ function numeroACaso() {
 
 async function fillMainAlbum(artistId) {
   let cardsContainer = document.querySelector(".playlist-cards-container");
-  cardsContainer.classList.add("mt-1")
+  cardsContainer.classList.add("mt-1");
   let cardContainer = document.createElement("div");
   cardContainer.classList.add("col-6", "col-md-4", "col-lg-3", "col-xl-2");
   let albums = await getArtistAlbums(artistId);
   let album = albums[0];
   let artist = await getArtist(artistId);
   console.log(artist);
-  console.log(album.id)
+  console.log(album.id);
   cardContainer.innerHTML = `
       <div class="card rounded-4">
+      <div class="play-artist-head-card">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="25"
+                        height="25"
+                        fill="currentColor"
+                        class="bi bi-play-fill"
+                        viewBox="0 0 16 16"
+                      >
+                        <path
+                          d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393z"
+                        />
+                      </svg>
+                    </div>
       <div class="rounded-4 overflow-hidden p-4">
           <a href="album.html?id=${album.id}">
             <img src="${album.cover}" class="card-img-top img-fluid rounded-4" alt="${album.title}" />
@@ -425,6 +432,7 @@ async function fillMainAlbum(artistId) {
     `;
 
   cardsContainer.appendChild(cardContainer);
+  cardsAnimation();
 }
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -438,90 +446,100 @@ document.addEventListener("DOMContentLoaded", function () {
   document.body.style.padding = "0";
 });
 
-
-
 // altezza sidebar sx
-function resizeSiedbarSx(){
+function resizeSiedbarSx() {
   let container = document.querySelector(".general-container");
   let libreria = document.querySelector(".sidebar-sx-libreria");
   let tBody = document.querySelector(".tabella");
   let containerHeight = container.offsetHeight;
 
   console.log(containerHeight);
-  tBody.style.height = `${containerHeight - 270}px`
+  tBody.style.height = `${containerHeight - 270}px`;
   libreria.classList.add("rounded-4");
   tBody.classList.add("rounded-4");
 
- libreria.style.height = `${containerHeight - 150}px`
+  libreria.style.height = `${containerHeight - 150}px`;
 }
 
-window.addEventListener("resize", resizeSiedbarSx)
-
-
+window.addEventListener("resize", resizeSiedbarSx);
 
 // player
 
 let playerHearts = document.querySelectorAll(".player-heart svg");
-console.log(playerHearts)
-playerHearts.forEach(heart => 
+console.log(playerHearts);
+playerHearts.forEach((heart) =>
   heart.addEventListener("click", () => {
-    console.log("click")
-    playerHearts.forEach(svg => {
+    console.log("click");
+    playerHearts.forEach((svg) => {
       svg.classList.toggle("d-none");
-    })
-  
-  })) 
-
+    });
+  })
+);
 
 // buongiorno
 
-
-  function changeBuongiornoCol(){
-    let buongiornoContainer = document.querySelector(".pomeriggio-album-container");
-    let main = document.querySelector(".main");
-    let mainWidth = main.offsetWidth;
-    buongiornoContainer.style.width = mainWidth;
-    if(mainWidth > 900){
-      buongiornoContainer.style.gridTemplateColumns = "repeat(4, 1fr)";
-    } else {
-      buongiornoContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
-    }
-  
+function changeBuongiornoCol() {
+  let buongiornoContainer = document.querySelector(
+    ".pomeriggio-album-container"
+  );
+  let main = document.querySelector(".main");
+  let mainWidth = main.offsetWidth;
+  buongiornoContainer.style.width = mainWidth;
+  if (mainWidth > 900) {
+    buongiornoContainer.style.gridTemplateColumns = "repeat(4, 1fr)";
+  } else {
+    buongiornoContainer.style.gridTemplateColumns = "repeat(2, 1fr)";
   }
-  
+}
 
+let topBar = document.querySelector(".blurred-bg");
 
-  let topBar = document.querySelector(".blurred-bg");
+topBar.style.backgroundColor = "black";
+topBar.style.filter = "blur(10px)";
+topBar.style.transform = "scale(2)";
+topBar.style.opacity = "0";
 
-  
- 
-  topBar.style.backgroundColor = "black";
-  topBar.style.filter = "blur(10px)";
-  topBar.style.transform = "scale(2)";
-  topBar.style.opacity = "0";
+topBar.style.zIndex = -1;
 
-  topBar.style.zIndex = -1;
-
-
-
-
-const scrollableElement = document.querySelector('.main');
+const scrollableElement = document.querySelector(".main");
 let playlistArtistContainer = document.querySelector(".play-artist-container");
-scrollableElement.addEventListener('scroll', () => {
+scrollableElement.addEventListener("scroll", () => {
   const scrollTopValue = scrollableElement.scrollTop;
-  if(scrollTopValue > 400){
+  if (scrollTopValue > 400) {
     topBar.style.backgroundColor = "black";
     topBar.style.opacity = "1";
-    topBar.style.transition = 'all 0.3s linear'
+    topBar.style.transition = "all 0.3s linear";
     playlistArtistContainer.classList.add("d-flex");
     playlistArtistContainer.classList.remove("d-none");
-
-  }else{
+  } else {
     topBar.style.opacity = "0";
     playlistArtistContainer.classList.remove("d-flex");
     playlistArtistContainer.classList.add("d-none");
   }
 
   // Puoi fare qualcosa con il valore di scroll
-  console.log('Scroll Top:', scrollTopValue);
-})
+  console.log("Scroll Top:", scrollTopValue);
+});
+
+
+
+function cardsAnimation(){
+let cards = document.querySelectorAll(".card")
+  cards.forEach((card) => {
+    let freccia = card.querySelector(".play-artist-head-card");
+    card.addEventListener("mouseover", () => {
+      freccia.style.opacity = "1";
+      freccia.style.transform = "translateY(-10px)";
+      freccia.style.transition = "all 0.3s ease";
+      card.style.backgroundColor = "#2e2e2e";
+    });
+  
+    card.addEventListener("mouseout", () => {
+      freccia.style.opacity = "0";
+      freccia.style.transform = "";
+      card.style.backgroundColor = "#181818";
+    });
+  });
+}
+
+cardsAnimation();

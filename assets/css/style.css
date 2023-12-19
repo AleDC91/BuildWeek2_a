@@ -12071,7 +12071,10 @@ tbody .data-aggiunta {
   vertical-align: center;
 }
 
-.add-playlist, .arrow .left, .add-friend, .close-btn {
+.add-playlist,
+.arrow .left,
+.add-friend,
+.close-btn {
   cursor: pointer;
 }
 
@@ -12239,7 +12242,8 @@ button > a {
   margin-left: 1rem;
 }
 
-.play-artist-name, .play-album-name {
+.play-artist-name,
+.play-album-name {
   font-size: 2rem;
   color: white;
   font-weight: bold;
@@ -12320,7 +12324,8 @@ button > a {
   overflow: hidden;
 }
 
-.play, .segui {
+.play,
+.segui {
   height: 3.5rem;
   padding: 16px 32px;
   border-radius: 3rem;
@@ -12350,6 +12355,7 @@ button > a {
   margin-bottom: 300px;
   background-color: #181818;
   min-height: 300px;
+  cursor: pointer;
 }
 
 /* Sidebar dx */
@@ -12444,7 +12450,8 @@ button > a {
   background-color: #333333;
 }
 
-.sidebar-dx-info, .impostazioniTesto {
+.sidebar-dx-info,
+.impostazioniTesto {
   font-size: 12px;
   font-weight: bold;
 }
@@ -12572,6 +12579,7 @@ button > a {
 }
 .pomeriggio-album-container .pomeriggio-album {
   background-color: #2a2a2a;
+  cursor: pointer;
 }
 .pomeriggio-album-container .pomeriggio-album img {
   height: 50px;
@@ -12630,7 +12638,8 @@ button > a {
   padding: 1em;
   margin-right: 1em;
 }
-.bottoni .random-music, .bottoni .altre-opzioni {
+.bottoni .random-music,
+.bottoni .altre-opzioni {
   border: 0;
   background: none;
 }
@@ -12693,4 +12702,28 @@ button > a {
 
 .home {
   color: #b3b3b3;
+}
+
+.play-artist-head-card {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(0, 255, 0);
+  border-radius: 50%;
+  position: absolute;
+  right: 10px;
+  top: calc(50% - 23px);
+  opacity: 0;
+}
+
+.artist-songs td a, .album-songs td a {
+  text-decoration: none;
+  color: white;
+}
+
+.artist-songs td a:hover, .album-songs td a:hover {
+  text-decoration: underline;
+  font-weight: bold;
 }

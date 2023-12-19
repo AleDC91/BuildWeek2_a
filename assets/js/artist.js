@@ -484,7 +484,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
 
       // Puoi fare qualcosa con il valore di scroll
-      console.log('Scroll Top:', scrollTopValue);
+      // console.log('Scroll Top:', scrollTopValue);
   })
   
 
@@ -524,13 +524,15 @@ document.addEventListener("DOMContentLoaded", function () {
       tr.innerHTML = `
       <td class="text-white">${index + 1}</td>
       <td class="d-inline-block">
+      <a href="album.html?id=${track.album.id}"/>
          <img
           class="foto-copertina "
           src=${track.album.cover_small}
           alt=""
-        />
+          />
+        </a>
       </td>
-      <td class="text-white">${track.title}</td>
+      <td class="text-white"><a href=${track.preview} target="_blank">${track.title}</a></td>
       <td class="text-white">${track.rank}</td>
       <td class="text-white">${Math.floor(track.duration/60)}:${String((track.duration%60)).padStart(2, '0')}</td>
       `
