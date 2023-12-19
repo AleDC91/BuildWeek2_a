@@ -12323,6 +12323,11 @@ button > a {
   height: 350px;
   overflow: hidden;
 }
+@media screen and (max-width: 500px) {
+  .playlist-cards-container {
+    height: auto !important;
+  }
+}
 
 .play,
 .segui {
@@ -12726,4 +12731,54 @@ button > a {
 .artist-songs td a:hover, .album-songs td a:hover {
   text-decoration: underline;
   font-weight: bold;
+}
+
+@media screen and (max-width: 600px) {
+  .sidebar-sx {
+    display: none !important;
+  }
+  .customSidebar, .main-head, .sponsored-playlist {
+    display: none !important;
+  }
+}
+.player .freccina-responsive {
+  display: none;
+}
+@media screen and (max-width: 500px) {
+  .player .freccina-responsive {
+    display: block;
+  }
+}
+@media screen and (max-width: 500px) {
+  .player .player-song-info {
+    justify-self: start;
+  }
+}
+@media screen and (max-width: 500px) {
+  .player {
+    background-color: #2e2e2e;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    height: 80px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .player .left-player img {
+    display: none;
+  }
+}
+@media screen and (max-width: 500px) {
+  .player .left-player .player-song-info {
+    display: flex;
+  }
+}
+@media screen and (max-width: 500px) {
+  .player .central-player {
+    display: none !important;
+  }
+}
+@media screen and (max-width: 500px) {
+  .player .right-player {
+    display: none !important;
+  }
 }

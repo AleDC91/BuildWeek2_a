@@ -20,6 +20,7 @@ body {
   width: 500px;
   background-color: #121212;
   height: 100%;
+
 }
 
 .tabella {
@@ -331,6 +332,9 @@ button > a {
 .playlist-cards-container {
   height: 350px;
   overflow: hidden;
+  @media screen and (max-width:500px) {
+    height: auto !important;
+  }
 }
 .play,
 .segui {
@@ -747,4 +751,61 @@ button > a {
 .artist-songs td a:hover, .album-songs td a:hover{
   text-decoration: underline;
   font-weight: bold;
+}
+
+
+@media screen and (max-width: 600px) {
+  .sidebar-sx{
+    display: none !important;
+  }
+  .customSidebar, .main-head, .sponsored-playlist{
+    display: none !important;
+  }
+
+}
+
+.player{
+  .freccina-responsive{
+    display: none;
+    @media screen and (max-width: 500px) {
+      display: block;
+    }
+  }
+  .player-song-info{
+    @media screen and (max-width: 500px) {
+      justify-self: start;
+    }
+
+  }
+  @media screen and (max-width: 500px) {
+    background-color: #2e2e2e;
+    border-radius: 20px;
+    margin-bottom: 5px;
+    height: 80px
+  }
+
+  .left-player{
+    img{
+      @media screen and (max-width: 500px) {
+        display: none;
+      }
+    }
+    .player-song-info{
+      @media screen and (max-width: 500px) {
+        display: flex;
+      }
+    }
+  }
+  .central-player{
+    @media screen and (max-width: 500px) {
+      display: none !important;
+    }
+  
+  }
+
+  .right-player{
+    @media screen and (max-width: 500px) {
+    display: none !important;
+    }
+  }
 }

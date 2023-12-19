@@ -155,9 +155,16 @@ function responsiveCards() {
   let cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     card.parentNode.className = "";
-    if (main.offsetWidth < 576) {
-      card.parentNode.classList.add("col-4");
-    } else if (main.offsetWidth >= 576 && main.offsetWidth < 767) {
+    if (main.offsetWidth < 400) {
+      card.parentNode.classList.add("col-12");
+      card.parentNode.style.maxHeight= "400px"
+    }
+    else if (main.offsetWidth >= 401 && main.offsetWidth < 575) {
+      card.parentNode.classList.add("col-6");
+      card.parentNode.style.maxHeight= "400px"
+    }
+    
+    else if (main.offsetWidth >= 576 && main.offsetWidth < 767) {
       card.parentNode.classList.add("col-4");
     } else if (main.offsetWidth >= 768 && main.offsetWidth < 992) {
       card.parentNode.classList.add("col-3");
@@ -165,7 +172,7 @@ function responsiveCards() {
       card.parentNode.classList.add("col-2");
     } else if (main.offsetWidth > 1200) {
       card.parentNode.classList.add("col-2");
-    }
+    } 
   });
 }
 
@@ -521,10 +528,8 @@ scrollableElement.addEventListener("scroll", () => {
   console.log("Scroll Top:", scrollTopValue);
 });
 
-
-
-function cardsAnimation(){
-let cards = document.querySelectorAll(".card")
+function cardsAnimation() {
+  let cards = document.querySelectorAll(".card");
   cards.forEach((card) => {
     let freccia = card.querySelector(".play-artist-head-card");
     card.addEventListener("mouseover", () => {
@@ -533,7 +538,7 @@ let cards = document.querySelectorAll(".card")
       freccia.style.transition = "all 0.3s ease";
       card.style.backgroundColor = "#2e2e2e";
     });
-  
+
     card.addEventListener("mouseout", () => {
       freccia.style.opacity = "0";
       freccia.style.transform = "";
@@ -543,3 +548,29 @@ let cards = document.querySelectorAll(".card")
 }
 
 cardsAnimation();
+
+window.addEventListener("resize", eliminaBordi);
+window.addEventListener("load", eliminaBordi);
+
+function eliminaBordi() {
+  let windowWidth = window.innerWidth;
+  let cards = document.querySelectorAll(".card");
+  if (window.innerWidth < 500) {
+    document
+      .querySelector(".general-container")
+      .classList.remove("p-4", "container-fluid");
+      cards.forEach((card) => {
+        card.parentNode.className = "";
+        // card.parentNode.classList.add("col-12");
+        card.parentNode.style.maxHeight= "400px"
+      });
+  } else {
+    document
+      .querySelector("general-container")
+      .classList.add("p-4", "container-fluid");
+      
+  }
+}
+
+
+
