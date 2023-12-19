@@ -491,6 +491,37 @@ playerHearts.forEach(heart =>
   
 
 
+  let topBar = document.querySelector(".blurred-bg");
 
-// codice per ARTIST
+  
+ 
+  topBar.style.backgroundColor = "black";
+  topBar.style.filter = "blur(10px)";
+  topBar.style.transform = "scale(2)";
+  topBar.style.opacity = "0";
 
+  topBar.style.zIndex = -1;
+
+
+
+
+const scrollableElement = document.querySelector('.main');
+let playlistArtistContainer = document.querySelector(".play-artist-container");
+scrollableElement.addEventListener('scroll', () => {
+  const scrollTopValue = scrollableElement.scrollTop;
+  if(scrollTopValue > 400){
+    topBar.style.backgroundColor = "black";
+    topBar.style.opacity = "1";
+    topBar.style.transition = 'all 0.3s linear'
+    playlistArtistContainer.classList.add("d-flex");
+    playlistArtistContainer.classList.remove("d-none");
+
+  }else{
+    topBar.style.opacity = "0";
+    playlistArtistContainer.classList.remove("d-flex");
+    playlistArtistContainer.classList.add("d-none");
+  }
+
+  // Puoi fare qualcosa con il valore di scroll
+  console.log('Scroll Top:', scrollTopValue);
+})

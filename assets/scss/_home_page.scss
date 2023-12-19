@@ -586,7 +586,7 @@ border: 1px solid #b3b3b3;;
 
 // buongiorno
 .buon-pomeriggio{
-  padding: 2em 1em;
+  padding: 2em 1em 1.5em 1em;
 }
 .pomeriggio-titolo{
   font-size: 2rem;
@@ -711,8 +711,26 @@ overflow:hidden
   text-transform: uppercase;
   font-size:10px;}
   
-
+  .album-container{
+    height: 350px;
+    margin-top: -60px; 
+  }
 
 
   
-  
+  .artist-link-head{
+    cursor: pointer;
+    text-decoration: none;
+&:hover{
+  text-decoration: underline;
+}
+  }
+ 
+.cerchietto{
+  width: 30px;
+  height: 30px;
+}
+
+.home{
+  color: #b3b3b3
+}

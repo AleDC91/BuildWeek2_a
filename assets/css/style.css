@@ -12554,7 +12554,7 @@ button > a {
 }
 
 .buon-pomeriggio {
-  padding: 2em 1em;
+  padding: 2em 1em 1.5em 1em;
 }
 
 .pomeriggio-titolo {
@@ -12671,4 +12671,26 @@ button > a {
   color: antiquewhite;
   text-transform: uppercase;
   font-size: 10px;
+}
+
+.album-container {
+  height: 350px;
+  margin-top: -60px;
+}
+
+.artist-link-head {
+  cursor: pointer;
+  text-decoration: none;
+}
+.artist-link-head:hover {
+  text-decoration: underline;
+}
+
+.cerchietto {
+  width: 30px;
+  height: 30px;
+}
+
+.home {
+  color: #b3b3b3;
 }

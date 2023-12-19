@@ -468,7 +468,7 @@ document.addEventListener("DOMContentLoaded", function () {
     let topBar = document.querySelector(".blurred-bg");
 
     const scrollableElement = document.querySelector('.main');
-    let playlistArtistContainer = document.querySelector(".play-artist-cotainer");
+    let playlistArtistContainer = document.querySelector(".play-artist-container");
     scrollableElement.addEventListener('scroll', () => {
       const scrollTopValue = scrollableElement.scrollTop;
       if(scrollTopValue > 400){
